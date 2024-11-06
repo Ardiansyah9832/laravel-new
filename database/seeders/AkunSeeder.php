@@ -20,8 +20,8 @@ class AkunSeeder extends Seeder
         //     'role' => 'kasir',
         // ]);        
         User::create([
-            'name' => 'YangMulia',
-            'email' => 'tet@gmail.com',
+            'name' => 'administrator',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),  // Menggunakan Hash::make untuk hashing
             'role' => 'admin'
         ]);        
