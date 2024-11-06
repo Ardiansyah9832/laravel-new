@@ -18,7 +18,7 @@
             <div class="mb-3 row">
                 <label for="nama_customer" class="col-sm-2 col-form-label">Nama Pembelian</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name_costumer" id="name_costumer" class="form-control">
+                    <input type="text" name="name_costumer" id="name_costumer" class="form-control" value="{{ old('name_costumer') }}">
                 </div>
             </div>
             <div class="mb-3 row">

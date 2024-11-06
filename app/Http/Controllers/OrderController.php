@@ -43,6 +43,11 @@ class OrderController extends Controller
         {
             $medicines = Medicine::where('id',$id)->first();
 
+            if ($medicines['stock'] < $count) {
+                $msg = "Obat " . $medicines ['name'] . " sisa stok : " . $medicines['stock'] . ". Tidak dapat melakukan proses pembelian";
+                return redirect()->back()->withInput()->with('failed', $msg);
+            }
+
             $subPrice = $medicines['price'] * $count;
 
             $arrayItem = [
