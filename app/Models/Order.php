@@ -21,4 +21,14 @@ class Order extends Model
     protected $casts = [
         'medicines' => 'array'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // public function order()
+    // {
+    //     return $this->hasMany(Order::class);
+    // }
 }

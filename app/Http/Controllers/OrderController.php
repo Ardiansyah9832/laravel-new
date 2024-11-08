@@ -6,6 +6,7 @@ use App\Models\Medicine;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.kasir.index');
+        // return view('order.kasir.index');
+        $order = Order::with('user')->simplePaginate(5);
+        return view('order.kasir.index', compact('order'));
     }
 
     /**
@@ -116,5 +119,13 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function downloadPdf($id)
+    {
+        $order = Order::find($id)->toArray();
+        view()->share('order', $order);
+        $pdf = PDF::loadView('order.kasir.download-pdf', $order);
+        return $pdf->download('invoice.pdf');
     }
 }
